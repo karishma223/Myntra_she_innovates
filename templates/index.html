@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop File Upload</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .drag-drop-area {
+            border: 2px dashed #007bff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            color: #007bff;
+            font-size: 18px;
+        }
+
+        .drag-drop-area.dragover {
+            background-color: #e9ecef;
+        }
+    </style>
+    <link href="img/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owl Carousel Example</title>
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!---Style tag for header-->
+    <style>
+        .site-navbar {
+            padding: 15px 70px;
+        }
+
+        .site-navbar.bg-dark {
+            background-color: #262626 !important;
+        }
+
+        .site-logo h2 {
+            font-size: 30px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .site-logo h2 span {
+            color: #ff006c;
+        }
+
+        .site-logo p {
+            text-transform: uppercase;
+            color: #fff;
+            opacity: 0.43;
+            font-size: 9px;
+            letter-spacing: 0.29em;
+            margin-bottom: 0;
+        }
+
+        .site-navbar.navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 400;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding-right: 25px;
+            padding-left: 25px;
+        }
+
+        .site-navbar.navbar-dark .navbar-nav .nav-link:hover {
+            color: #ff006c;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin-left: 30px;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff006c;
+        }
+    </style>
+    <!--Style tag for footer-->
+    <style>
+        .footer-section {
+            padding-top: 95px;
+            padding-bottom: 70px;
+        }
+
+        .footer-widget .fw-title {
+            font-size: 24px;
+            margin-bottom: 58px;
+        }
+
+        .footer-widget.fw-about img {
+            margin-bottom: 50px;
+        }
+
+        .footer-widget.fw-about p {
+            font-size: 14px;
+            margin-bottom: 40px;
+            line-height: 2;
+        }
+
+        .footer-widget .fw-social a {
+            color: #000;
+            margin-right: 25px;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .footer-widget .fw-social a:hover {
+            color: #ff006c;
+        }
+
+        .footer-widget.resent-post .rp-item {
+            margin-bottom: 25px;
+        }
+
+        .footer-widget.resent-post .rp-item h4 {
+            font-size: 16px;
+            font-family: "Helvetica 45 Light", sans-serif;
+        }
+
+        .footer-widget.resent-post .rp-item span {
+            font-size: 12px;
+            font-family: "Helvetica 45 Light", sans-serif;
+            color: #ff006c;
+        }
+
+        .footer-widget ul {
+            list-style: none;
+        }
+
+        .footer-widget ul li {
+            font-size: 15px;
+            font-family: "Helvetica 45 Light", sans-serif;
+            margin-bottom: 10px;
+            color: #71767b;
+        }
+
+        .footer-widget ul li a {
+            color: #71767b;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .footer-widget ul li a:hover {
+            color: #ff006c;
+        }
+
+        .footer-widget.contact-widget ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-widget.contact-widget span {
+            display: inline-block;
+            width: 75px;
+        }
+
+        .copyright {
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        .copyright i {
+            color: #ff006c;
+        }
+
+        .copyright a {
+            color: #081624;
+            text-decoration: underline;
+        }
+
+        .copyright a:hover {
+            color: #ff006c;
+        }
+    </style>
+    <!--back-to top section-->
+    <style>
+        .backtotop {
+            position: relative;
+            border-bottom: 3px solid #e3e3e3;
+            margin-bottom: 30px;
+        }
+
+        .backtotop .up-btn {
+            position: absolute;
+            width: 62px;
+            height: 62px;
+            left: calc(50% - 31px);
+            top: calc(50% - 31px);
+            text-align: center;
+            color: #71767b;
+            font-size: 16px;
+            display: block;
+            padding-top: 16px;
+            border-radius: 50%;
+            border: 3px solid #e3e3e3;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header section -->
+    <header class="header-section">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark site-navbar">
+            <a class="navbar-brand site-logo" href="index.html#">
+                <h2><span>In</span>Style</h2>
+                <p>Fashion Forward</p>
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <!-- Main menu -->
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">the Brand</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="social-links my-2 my-lg-0">
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Header section end-->
+
+
+
+
+    <!--Drag and drop area-->
+    <div class="container mt-5">
+        <h1 class="text-center">Drag and Drop File Upload</h1>
+        <br>
+        <div id="drag-drop-area" class="drag-drop-area"
+            style="width: 1200px; height: 500px;display: flex; justify-content: center; align-items: center;font-size: 24px;">
+            Drag & Drop your files here or click to upload
+        </div>
+        <input type="file" id="file-input" hidden>
+        <div id="file-list" class="mt-3"></div>
+        <div id="result" class="mt-3"></div>
+    </div>
+    <!--Drag and drop area end-->
+
+    <!--Additional thing I'm adding-->
+    <!-- Output Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div id="result" class="output-section text-center">
+                <h4>Output</h4>
+                <div id="output-content" class="output-content">
+                    <!-- Output content will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Information Section -->
+  <!-- Additional Information Section -->
+  <div class="row mt-5">
+    <div class="col-md-12">
+        <h4>Related Information</h4>
+        <div class="related-info">
+            <p>Check out these similar items or explore more from our collection:</p>
+            <ul class="related-items list-unstyled" id="related-items">
+                <!-- Related items will be populated here -->
+                <section class="shop-section">
+                    <div class="container">
+                        <style>
+                            /* Custom styles for product items */
+                            .product-item {
+                                margin-bottom: 30px;
+                                border: 1px solid #e1e1e1;
+                                padding: 20px;
+                                transition: all 0.3s ease;
+                            }
+                            .product-item:hover {
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                transform: translateY(-5px);
+                            }
+                            .product-item .pi-pic img {
+                                width: 100%;
+                                height: auto;
+                                border-radius: 5px;
+                                margin-bottom: 15px;
+                            }
+                            .product-item .pi-text {
+                                text-align: center;
+                            }
+                            .product-item .pi-text h6 {
+                                font-size: 18px;
+                                color: #333;
+                                margin-bottom: 10px;
+                            }
+                            .product-item .pi-links {
+                                text-align: center;
+                            }
+                            .product-item .pi-links a {
+                                display: inline-block;
+                                margin-right: 10px;
+                                font-size: 14px;
+                                color: #666;
+                            }
+                            .product-item .pi-links a:hover {
+                                color: #333;
+                            }
+                        </style>
+                        <section class="shop-section">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Product 1 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img4.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$35.00</h6>
+                                                <p>Product Name 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 2 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img5.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$30.00</h6>
+                                                <p>Product Name 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 3 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img3.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$80.00</h6>
+                                                <p>Product Name 3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more products as needed -->
+                                </div>
+                                <div class="row">
+                                    <!-- Product 1 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img5.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$35.00</h6>
+                                                <p>Product Name 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 2 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img2.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$30.00</h6>
+                                                <p>Product Name 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 3 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img3.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$80.00</h6>
+                                                <p>Product Name 3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more products as needed -->
+                                </div>
+                                <div class="row">
+                                    <!-- Product 1 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img4.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$35.00</h6>
+                                                <p>Product Name 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 2 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img5.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$30.00</h6>
+                                                <p>Product Name 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 3 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img3.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$80.00</h6>
+                                                <p>Product Name 3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more products as needed -->
+                                </div>
+                                <div class="row">
+                                    <!-- Product 1 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img5.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$35.00</h6>
+                                                <p>Product Name 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 2 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img4.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$30.00</h6>
+                                                <p>Product Name 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 3 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img3.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$80.00</h6>
+                                                <p>Product Name 3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more products as needed -->
+                                </div>
+                                <div class="row">
+                                    <!-- Product 1 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img2.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$35.00</h6>
+                                                <p>Product Name 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 2 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img1.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$30.00</h6>
+                                                <p>Product Name 2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product 3 -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <img src="img/img5.jpeg" alt="">
+                                                <div class="pi-links">
+                                                    <a href="#" class="add-card"><i class="fa fa-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                    <a href="#" class="wishlist-btn"><i class="fa fa-heart-o"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="pi-text">
+                                                <h6>$80.00</h6>
+                                                <p>Product Name 3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more products as needed -->
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Shop section end -->
+                    
+                    
+                    </div>
+                </section>
+                 <!---itemsssssss-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Interactive Elements Section -->
+<div class="row mt-5">
+    <div class="col-md-12 text-center">
+        <button class="btn btn-success" onclick="window.location.href='shop.html'">Shop More</button>
+        <button class="btn btn-info" onclick="window.location.href='contact.html'">Contact Us</button>
+    </div>
+</div>
+</div>
+
+<!-- CSS for Styling -->
+<style>
+.drag-drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.drag-drop-area.dragover {
+    background-color: #e0e0e0;
+}
+
+.file-list div {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.output-section {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.related-info {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.related-items li {
+    margin: 5px 0;
+}
+
+.related-items a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.related-items a:hover {
+    text-decoration: underline;
+}
+</style>
+
+    <!--Additional thing I'm adding-->
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.portfolio-slider').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    </script>
+    <!--Slider end-->
+
+
+    <br><br>
+    <!-- Back to top -->
+    <div class="container">
+        <div class="backtotop">
+            <div class="up-btn" id="backTotop">UP</div>
+        </div>
+    </div>
+    <!-- Back to top -->
+
+
+
+
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget fw-about">
+                        <img src="img/footer-logo.png" alt="">
+                        <p>Fashion is not something that exists in dresses only. Fashion is in the sky, in the street,
+                            fashion has to do with ideas, the way we live, what is happening</p>
+                        <div class="fw-social">
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget resent-post">
+                        <h2 class="fw-title">Recent Posts</h2>
+                        <div class="rp-item">
+                            <h4>Paris Fashion Week</h4>
+                            <span>20 January 2019</span>
+                        </div>
+                        <div class="rp-item">
+                            <h4>About Our Fashion App</h4>
+                            <span>20 January 2019</span>
+                        </div>
+                        <div class="rp-item">
+                            <h4>Simple Blog Post</h4>
+                            <span>20 January 2019</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h2 class="fw-title">Usefull Links</h2>
+                        <ul>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Jobs</a></li>
+                            <li><a href="#">Reviews</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Subscribe</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget contact-widget">
+                        <h2 class="fw-title">Contact</h2>
+                        <ul>
+                            <li><span>Address:</span>Bnmit,Bangalore, India</li>
+                            <li><span>Phone:</span>+91 8210812221</li>
+                            <li><span>Mail:</span>sheinnovates@contact.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+
+
+
+
+
+    <!--SCRIPT TAGS-->
+    <script>
+        $(document).ready(function() {
+            var dropArea = document.getElementById('drag-drop-area');
+            var fileInput = document.getElementById('file-input');
+            var fileList = document.getElementById('file-list');
+            var resultDiv = document.getElementById('result');
+            var relatedItemsList = document.getElementById('related-items');
+    
+            dropArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropArea.classList.add('dragover');
+            });
+    
+            dropArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                dropArea.classList.remove('dragover');
+            });
+    
+            dropArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropArea.classList.remove('dragover');
+                var files = e.dataTransfer.files;
+                handleFiles(files);
+            });
+    
+            fileInput.addEventListener('change', function() {
+                var files = this.files;
+                handleFiles(files);
+            });
+    
+            function handleFiles(files) {
+                fileList.innerHTML = '';
+                resultDiv.innerHTML = '';
+                relatedItemsList.innerHTML = '';
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var listItem = document.createElement('div');
+                    listItem.textContent = file.name;
+                    fileList.appendChild(listItem);
+    
+                    setTimeout(function() {
+                        var extractedFeatures = "sample_features"; // Replace with actual feature extraction logic
+                        $.ajax({
+                            type: 'POST',
+                            url: '/match_features',
+                            data: { features: extractedFeatures },
+                            success: function(response) {
+                                $('#output-content').html(response);
+    
+                                // Fetch and display related items
+                                var matchedItemId = response.matched_item_id; // Adjust according to your response structure
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/related_items',
+                                    data: { matched_item_id: matchedItemId },
+                                    success: function(relatedItems) {
+                                        relatedItems.forEach(function(item) {
+                                            var relatedItem = '<li><a href="' + item.url + '">' + item.name + '</a></li>';
+                                            $('#related-items').append(relatedItem);
+                                        });
+                                    },
+                                    error: function(error) {
+                                        console.error('Error:', error);
+                                    }
+                                });
+                            },
+                            error: function(error) {
+                                console.error('Error:', error);
+                            }
+                        });
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+<!--yaha tak-->
+    <script>
+        const dragDropArea = document.getElementById('drag-drop-area');
+        const fileInput = document.getElementById('file-input');
+        const fileList = document.getElementById('file-list');
+        const resultDiv = document.getElementById('result');
+
+        dragDropArea.addEventListener('click', () => fileInput.click());
+
+        dragDropArea.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dragDropArea.classList.add('dragover');
+        });
+
+        dragDropArea.addEventListener('dragleave', () => {
+            dragDropArea.classList.remove('dragover');
+        });
+
+        dragDropArea.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dragDropArea.classList.remove('dragover');
+            handleFiles(event.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            handleFiles(event.target.files);
+        });
+
+        function handleFiles(files) {
+            const formData = new FormData();
+            for (const file of files) {
+                formData.append('file', file);
+            }
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json()).then(data => {
+                resultDiv.innerHTML = `<p>${data.message}</p>`;
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#backTotop").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 1000);
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
